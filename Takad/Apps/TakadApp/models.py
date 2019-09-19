@@ -7,13 +7,7 @@ class Users(models.Model):
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=255, null=True)
     password = models.TextField()
-
-
-class Admin(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.CharField(max_length=255, null=True)
-    password = models.TextField()
+    is_admin = models.BooleanField()
 
 
 class Reports(models.Model):
