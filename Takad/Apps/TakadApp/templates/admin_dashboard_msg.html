@@ -1,0 +1,77 @@
+{% extends "base_admin.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block dash_title%} Messages {% endblock %}
+{% block card_title%} Messages {% endblock %}
+{% block card_desc%} here is List of messages {% endblock %}
+
+{% block user_dashboard_block%}
+
+
+
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-danger">
+                  <h4 class="card-title ">Messages</h4>
+                  <p class="card-category"> Here is a List of messages</p>
+                </div>
+                <div class="card-body">
+
+                        
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <tr><th>
+                          ID
+                        </th>
+                        <th>
+                          User Email
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                          View
+                        </th>
+                        
+                      </tr>
+                    </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            1
+                          </td>
+                          <td>
+                            ibrahimha@gmail.com
+                          </td>
+                          <td>
+                            New Dangers Virus
+                          </td>
+                          
+                          <td class="btn btn-danger">
+                            View
+                          </td>
+                        </tr>
+                        
+                      </tbody>
+                      
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% endblock %}

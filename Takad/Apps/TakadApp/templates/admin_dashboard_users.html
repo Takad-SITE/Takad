@@ -1,0 +1,80 @@
+{% extends "base_admin.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block dash_title%} Users {% endblock %}
+{% block card_title%} Users {% endblock %}
+{% block card_desc%} here is List of users {% endblock %}
+
+{% block user_dashboard_block%}
+
+
+
+<div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title ">Users</h4>
+                  <p class="card-category"> Here is a List of users</p>
+                </div>
+                <div class="card-body">
+
+                        
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead class=" text-primary">
+                        <tr><th>
+                          ID
+                        </th>
+                        <th>
+                          First Name
+                        </th>
+                        <th>
+                          Last Name
+                        </th>
+                        <th>
+                          Email
+                        </th>
+                        <th>
+                          Send Message
+                        </th>
+                      </tr></thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            1
+                          </td>
+                          <td>
+                            Dakota
+                          </td>
+                          <td>
+                            Rice
+                          </td>
+                          <td>
+                           Dakota@gmail.com
+                          </td>
+                          <td class="btn btn-info">
+                            Send
+                          </td>
+                        </tr>
+                       
+                      </tbody>
+                      
+                    </table>
+                    
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {% endblock %}
