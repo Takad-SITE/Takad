@@ -4,4 +4,4 @@ from .models import *
 
 def index(request):
     
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request,"url_result.html")
