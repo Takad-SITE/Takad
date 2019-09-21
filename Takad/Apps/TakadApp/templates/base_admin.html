@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Takad</title>
+    <title>Admin Dashboard</title>
     {% load static %}
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
@@ -47,33 +47,33 @@
                     <ul class="nav">
                       
                       <li class="nav-item active ">
-                        <a class="nav-link" href="https://demos.creative-tim.com/material-dashboard/examples/user.html">
+                        <a class="nav-link" href="{% url 'admin' %}">
                           <i class="material-icons">person</i>
                           <p>Dashboard</p>
                         </a>
                       </li>
 
                       <li class="nav-item ">
-                            <a class="nav-link" href="https://demos.creative-tim.com/material-dashboard/examples/tables.html">
+                            <a class="nav-link" href="{% url 'admin' %}/admin_dashboard_users">
                               <i class="material-icons">supervised_user_circle</i>
                               <p>Users</p>
                             </a>
                           </li>
 
                           <li class="nav-item ">
-                                <a class="nav-link" href="https://demos.creative-tim.com/material-dashboard/examples/tables.html">
+                                <a class="nav-link" href="{% url 'admin' %}/admin_dashboard_reports">
                                   <i class="material-icons">assignment</i>
                                   <p>Reports</p>
                                 </a>
                               </li>
                               <li class="nav-item ">
-                                    <a class="nav-link" href="https://demos.creative-tim.com/material-dashboard/examples/tables.html">
+                                    <a class="nav-link" href="{% url 'admin' %}/admin_dashboard_msg">
                                       <i class="material-icons">message</i>
                                       <p>Meesages</p>
                                     </a>
                                   </li> 
                       <li class="nav-item ">
-                        <a class="nav-link" href="https://demos.creative-tim.com/material-dashboard/examples/tables.html">
+                        <a class="nav-link" href="{% url 'admin' %}/admin_dashboard_history">
                           <i class="material-icons">content_paste</i>
                           <p>History</p>
                         </a>
@@ -127,7 +127,9 @@
                               <a class="dropdown-item" href="#">Profile</a>
                               
                               <div class="dropdown-divider"></div>
+                              <form action="/logout">
                               <a class="dropdown-item" href="#">Log out</a>
+                            </form>
                             </div>
                           </li>
                         </ul>

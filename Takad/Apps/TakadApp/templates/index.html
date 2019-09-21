@@ -72,14 +72,14 @@
     <div class="card-body">
       <div class="tab-content">
         <div class="tab-pane active show" id="profile">
-          <div class="form-group bmd-form-group">
+          <form class="form-group bmd-form-group" action="/scan_url" method="POST">
             <div class="input-group">
               <div class="input-group-prepend">
                 <div class="input-group-text"><i class="material-icons">search</i>
                 </div>
               </div>
               <input type="text" placeholder="Search or scan a URL..." class="form-control">
-            </div>
+            </form>
           </div>
 
           <a href="#0" type="submit" class="btn btn-primary">Scan</a>
@@ -90,35 +90,35 @@
           </div>
         </div>
 
-      
 
-      <div class="tab-pane" id="messages">
 
-        <div class="form-group form-file-upload form-file-multiple">
-            
-          <input type="file" multiple="" class="inputFileHidden">
-          <div class="input-group">
-            <input type="text" class="form-control inputFileVisible" placeholder="Single File">
-            <span class="input-group-btn">
-              <button type="button" class="btn btn-fab btn-round btn-primary">
-                <i class="material-icons">attach_file</i>
-              </button>
-            </span>
+        <div class="tab-pane" id="messages">
+
+          <form class="form-group form-file-upload form-file-multiple" action="/scan_file">
+
+            <input type="file" multiple="" class="inputFileHidden">
+            <div class="input-group">
+              <input type="text" class="form-control inputFileVisible" placeholder="Single File">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-fab btn-round btn-primary">
+                  <i class="material-icons">attach_file</i>
+                </button>
+              </span>
+            </div>
+          </form>
+
+
+          <a href="#0" type="submit" style="align-content: center" class="btn btn-primary">Upolad</a>
+          <div class="card-footer text-muted" style="font-size: 10px;">
+            <p style="text-align: center;"> By submitting your file to VirusTotal you are asking VirusTotal to share
+              your submission with the security community and agree to <a href="">our Terms of Service and Privacy
+                Policy</a><a href="http://">Learn more</a>. </p>
           </div>
         </div>
-      
-
-      <a href="#0" type="submit" style="align-content: center" class="btn btn-primary">Upolad</a>
-      <div class="card-footer text-muted" style="font-size: 10px;">
-        <p style="text-align: center;"> By submitting your file to VirusTotal you are asking VirusTotal to share
-          your submission with the security community and agree to <a href="">our Terms of Service and Privacy
-            Policy</a><a href="http://">Learn more</a>. </p>
       </div>
+
     </div>
   </div>
-
-</div>
-</div>
 </div>
 </div>
 </div>
