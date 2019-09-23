@@ -1,0 +1,68 @@
+{% extends "base_user.html" %}
+
+{% load static %}
+
+
+
+
+
+{% block dash_title%} Contact us {% endblock %}
+{% block card_title%} Contact us {% endblock %}
+{% block card_desc%}  {% endblock %}
+
+{% block user_dashboard_block%}
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-success">
+                        <h4 class="card-title ">Contact us</h4>
+                        <p class="card-category"> </p>
+                    </div>
+                    <div class="card-body">
+
+
+                            <form class="form-group bmd-form-group" action="/contactus_form" method="GET">
+                                    <div class="row">
+                                      
+                                      <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
+                                          <label class="bmd-label-floating">Title</label>
+                                          <input type="text" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group bmd-form-group">
+                                          <label class="bmd-label-floating">Email address</label>
+                                          <input type="email" class="form-control">
+                                        </div>
+                                      </div>
+                                    </div>
+                                   
+                                    <div class="row">
+                                      <div class="col-md-12">
+                                        <div class="form-group">
+                                          <label>Message</label>
+                                          <div class="form-group bmd-form-group">
+                                            <label class="bmd-label-floating"> </label>
+                                            <textarea class="form-control" rows="5"></textarea>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-success pull-right">Send</button>
+                                    <div class="clearfix"></div>
+                                  <div></div></form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

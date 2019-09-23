@@ -78,9 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'takad_db',
-        'USER': 'Azooz',
+        'USER': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
+        'PASSWORD':'postgres'
     }
 }
 
