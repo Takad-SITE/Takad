@@ -12,7 +12,6 @@ password_signUp
 confirmPassword_signUp
 _________________________
 Login::::
-
 email_login
 password_login
 
@@ -45,7 +44,6 @@ class UsersManager(models.Manager):
 
         return errors
 
-
 class Users(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -54,6 +52,7 @@ class Users(models.Model):
     is_admin = models.BooleanField(default=False)
     #for Vaildation part
     objects =UsersManager()
+
 
 class Reports(models.Model):
     verbose_msg = models.TextField()
