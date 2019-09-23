@@ -22,5 +22,9 @@ urlpatterns = [
     path('logout',admin_views.logout),
     path('admin/admin_dashboard_users',admin_views.admin_dashboard_users),
     path('admin/admin_dashboard_reports',admin_views.admin_dashboard_reports),
-    path('admin/admin_dashboard_msg',admin_views.admin_dashboard_msg)
+    path('admin/admin_dashboard_msg',admin_views.admin_dashboard_msg),
+    path('admin/admin_dashboard_history',admin_views.admin_dashboard_history),
+    #urls for result
+    path('url_result',views.urls_result),
+    path('file_result',views.file_result),
 ]

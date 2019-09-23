@@ -14,3 +14,9 @@ def scan_url(request):
 def scan_file(request):
     return HttpResponse('scan file')
 
+
+def urls_result(request):
+    return render(request,"url_result.html")
+
+def file_result(request):
+    return render(request,"file_result.html")

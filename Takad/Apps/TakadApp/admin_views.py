@@ -13,3 +13,5 @@ def admin_dashboard_reports(request):
     return render(request,"admin_dashboard_reports.html")
 def admin_dashboard_msg(request):
     return render(request,"admin_dashboard_msg.html")
+def admin_dashboard_history(request):
+    return render(request,"admin_dashboard_history.html")
