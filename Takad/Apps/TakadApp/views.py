@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
-
+import requests # for the API
 from django.contrib import messages
 from django.contrib.messages import SUCCESS, ERROR
+
 
 
 def sign_up(request):
@@ -52,11 +53,13 @@ def login(request):
             #  return redirect("/login")
         else:
         # passowrd in correct ,but do not tell that for user, to avoide hacker
-            return HttpResponse("sorry canot not loging chack ur email and Password")
+            messages.error(request, "Email or Password are incorrect")
+            return render(request,"index.html")
     
     except:
     #can not login  , invialed Email or not register in DB
-        return HttpResponse("error not found :)  sorry canot not loging")
+        messages.error(request, "Email or Password are incorrect")
+        return render(request,"index.html")
     
 
 
@@ -64,20 +67,42 @@ def login(request):
 def index(request):
     return render(request, "index.html")
 
+def index2(request):
+    return render(request, "index2.html")
+def logout(request):
+    return redirect('/')
 
-
-
-def scan_url(request):
-    return HttpResponse('scan url')
+# def scan_url(request):
+#     return render(request, "url_result.html")
 
 
 def scan_file(request):
     return HttpResponse('scan file')
 
 
-def urls_result(request):
-    return render(request, "url_result.html")
+def url_result(request):
+    
+    url = 'https://www.virustotal.com/vtapi/v2/url/scan'
+    params = {'apikey': '570dd83555b7b7f4ba014db6ff59f3a2762c7a125417550abc1d70f542edc804', 'url':request.POST['url']}
+    responseScan = requests.post(url, data=params)
+    dataScan = responseScan.json()
+    # print(dataScan)
+
+    url = 'https://www.virustotal.com/vtapi/v2/url/report'
+    params = {'apikey': '570dd83555b7b7f4ba014db6ff59f3a2762c7a125417550abc1d70f542edc804', 'resource':dataScan['scan_id']}
+    responseReport = requests.get(url, params=params)
+    dataReport = responseReport.json()
+    # print(dataReport)
+
+    return render(request, "url_result.html", dataReport)
 
 
 def file_result(request):
     return render(request, "file_result.html")
+
+
+
+
+#for page 404
+def page404(request,exception):
+    return render(request,"page404.html")

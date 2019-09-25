@@ -82,6 +82,7 @@
                 <form class="form" action="/login" method="POST">
                   {% csrf_token %}
 
+
                   <div class="form-group bmd-form-group">
                     <div class="input-group">
                       <div class="input-group-prepend">
@@ -134,6 +135,8 @@
                 <!--sing_up-->
                 <form class="form" action="sign_up" method="POST">
                   {% csrf_token %}
+
+
 
                   <div class="form-group bmd-form-group">
                     <div class="input-group">
@@ -209,15 +212,8 @@
   {% if messages %}
   {% for message in messages %}
 
-  <div class="container">
-    <div class="row">
-      <div class="col align-self-center alert alert-dismissible fade show alert-primary alert-{{message.tags}}" role="alert">
-        {{message}}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    </div>
+  <div class="alert alert-primary alert-{{message.tags}}" role="alert">
+    {{message}}
   </div>
 
   {% endfor %}
@@ -252,7 +248,6 @@
       <div class="card-body">
         <div class="tab-content">
           <div class="tab-pane active show" id="profile">
-
             <form class="form-group bmd-form-group" action="/url_result" method="POST">
               {% csrf_token %}
               <div class="input-group">
@@ -261,13 +256,14 @@
                   </div>
                 </div>
                 <input type="text" placeholder="Search or scan a URL..." class="form-control" name="url">
+
                 <div class="input-group">
                   <button type="submit" type="submit" class="btn btn-success">Scan</button>
                 </div>
             </form>
           </div>
 
-          <!-- <a type="submit" class="btn btn-success">Scan</a> -->
+
           <div class="card-footer text-muted" style="font-size: 10px;">
             <p style="text-align: center;"> By submitting your file to VirusTotal you are asking VirusTotal to share
               your submission with the security community and agree to <a href="">our Terms of Service and Privacy
@@ -280,18 +276,17 @@
         <div class="tab-pane" id="messages">
 
           <form action="/scan_file" method="POST">
-            {% csrf_token %}
-
-            <div class="input-group" style="border: 1px solid #CED4DA; border-radius: 5px">
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile04"
-                  aria-describedby="inputGroupFileAddon04">
-                <label class="custom-file-label">Choose file</label>
-              </div>
+              {% csrf_token %}
+            <div class="custom-file" style="border: 0.2px solid #e3e3e3; border-radius: 5px">
+              <input type="file" class="custom-file-input">
+              <label class="custom-file-label">Choose file...</label>
 
             </div>
-            <button type="submit" type="submit" class="btn btn-success">Scan</button>
+            <a href="#0" type="submit" style="align-content: center" class="btn btn-success">Scan</a>
           </form>
+
+
+
 
 
           <div class="card-footer text-muted" style="font-size: 10px;">

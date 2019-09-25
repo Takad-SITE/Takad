@@ -9,8 +9,10 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('login',views.login),
     path('sign_up',views.sign_up),
-    path('scan_url',views.scan_url),
+    # path('scan_url',views.scan_url),
     path('scan_file',views.scan_file),
+    path('index2',views.index2),
+    path('logout',views.logout),
     #urls for user dashboard
     path('user',user_views.index,name='user'),
     path('logout',user_views.logout),
@@ -25,6 +27,6 @@ urlpatterns = [
     path('admin/admin_dashboard_msg',admin_views.admin_dashboard_msg),
     path('admin/admin_dashboard_history',admin_views.admin_dashboard_history),
     #urls for result
-    path('url_result',views.urls_result),
+    path('url_result',views.url_result),
     path('file_result',views.file_result),
 ]

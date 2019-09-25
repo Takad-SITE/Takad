@@ -2,83 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- Start ALi's Style-->
-    <style>
-        :host {
-            display: block;
-        }
-
-        .engines {
-            background-color: white;
-            border-radius: 50%;
-            background-color: var(--vt-grey-200);
-            width: 100px;
-            height: 100px;
-            padding: 10px;
-            box-sizing: border-box;
-            margin: 0 auto 20px;
-        }
-
-        .engines .circle {
-            box-shadow: 0px 5px 20px 0px #666;
-            background-color: white;
-            border-radius: 50%;
-            height: 100%;
-            width: 100%;
-            text-align: center;
-            color: var(--vt-grey-500);
-            padding-top: 15px;
-            box-sizing: border-box;
-            position: relative;
-            z-index: 1;
-        }
-
-        .engines .circle .positives {
-            font-size: 35px;
-            line-height: 35px;
-            transition: color 0.2s ease;
-            color: var(--vt-red-500);
-        }
-
-        .engines .circle .positives[warning] {
-            color: var(--vt-blue-500);
-        }
-
-        .engines .circle .positives[clean] {
-            color: var(--vt-green-500);
-        }
-
-        .engines .circle .positives[clean][analyzing][empty] {
-            color: var(--vt-grey-500);
-        }
-
-        .engines .circle-progressbar {
-            transform: rotate(-90deg);
-            position: relative;
-            top: -90px;
-            left: -10px;
-            stroke-linecap: round;
-            transition: all 0.5s ease-in-out;
-        }
-
-        :host([analyzing]) #circularProgressbar {
-            animation: rotation 1s ease-in-out infinite;
-        }
-
-        @keyframes rotation {
-            from {
-                transform: rotate(-90deg);
-            }
-
-            to {
-                transform: rotate(270deg);
-            }
-
-        }
-    </style>
-
-    <!-- End ALi's Style-->
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -108,7 +31,7 @@
 
 <body>
 
-
+    
     <nav class="navbar navbar-expand-lg bg-success">
         <div class="container">
             <div class="navbar-translate">
@@ -127,11 +50,11 @@
                     <li class="nav-item active">
                         <a href="/" class="nav-link">Home</a>
                     </li>
-
+                    
                 </ul>
                 <form class="form-inline ml-auto">
-
-
+                   
+                    
 
                 </form>
                 <!-- Button trigger modal -->
@@ -149,29 +72,28 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-
+                                
                             </div>
                             <div class="modal-body">
                                 <!--Model Body-->
                                 <!--Login-->
-                                <form class="form" action="/login" method="POST">
+                                <form class="form"  action="/login" method="POST">
                                     {% csrf_token %}
 
                                     {% if messages %}
                                     {% for message in messages %}
                                     <div class="alert alert-{{message.tags}}" role="alert">
-                                        {{message}}
-                                    </div>
-
+                                            {{message}}
+                                          </div>
+                                    
                                     {% endfor %}
-                                    {% endif %}
+                                {% endif %}
                                     <div class="form-group bmd-form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="material-icons">email</i></div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Email..."
-                                                name="email_login">
+                                            <input type="text" class="form-control" placeholder="Email..." name="email_login">
                                         </div>
                                     </div>
 
@@ -181,8 +103,7 @@
                                                 <div class="input-group-text"><i class="material-icons">lock_outline</i>
                                                 </div>
                                             </div>
-                                            <input type="password" placeholder="Password..." class="form-control"
-                                                name="password_login">
+                                            <input type="password" placeholder="Password..." class="form-control" name="password_login">
                                         </div>
                                     </div>
                             </div>
@@ -190,7 +111,7 @@
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-success">Login</button>
                             </div>
-                            </form>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -220,38 +141,35 @@
                                 <form class="form" action="sign_up" method="POST">
                                     {% csrf_token %}
 
-
+                                    
                                     {% if messages %}
                                     {% for message in messages %}
-
+                                    
                                     <div class="text-danger alert-{{message.tags}}" role="alert">
-                                        {{message}}
-                                    </div>
-
+                                            {{message}}
+                                          </div>
+                                    
                                     {% endfor %}
-                                    {% endif %}
+                                {% endif %}
                                     <div class="form-group bmd-form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="material-icons">face</i></div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="First name..."
-                                                name="firstName_signUp">
-
-
-
+                                            <input type="text" class="form-control" placeholder="First name..." name="firstName_signUp">
+                                            
+                                                
+                                            
                                         </div>
                                     </div>
 
                                     <div class="form-group bmd-form-group">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <div class="input-group-text"><i
-                                                        class="material-icons">account_circle</i></div>
+                                                <div class="input-group-text"><i class="material-icons">account_circle</i></div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Last name..."
-                                                name="lastName_signUp">
-
+                                            <input type="text" class="form-control" placeholder="Last name..." name="lastName_signUp">
+                                            
                                         </div>
                                     </div>
 
@@ -260,9 +178,8 @@
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text"><i class="material-icons">email</i></div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Email..."
-                                                name="email_signUp">
-
+                                            <input type="text" class="form-control" placeholder="Email..." name="email_signUp">
+                                            
                                         </div>
                                     </div>
                                     <br>
@@ -272,28 +189,26 @@
                                                 <div class="input-group-text"><i class="material-icons">lock_outline</i>
                                                 </div>
                                             </div>
-                                            <input type="password" placeholder="Password..." class="form-control"
-                                                name="password_signUp">
+                                            <input type="password" placeholder="Password..." class="form-control" name="password_signUp">
                                         </div>
                                     </div>
                                     <div class="form-group bmd-form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <div class="input-group-text"><i class="material-icons">lock_outline</i>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <div class="input-group-text"><i class="material-icons">lock_outline</i>
+                                                    </div>
                                                 </div>
+                                                <input type="password" placeholder="Confirm Password..." class="form-control" name="confirmPassword_signUp">
                                             </div>
-                                            <input type="password" placeholder="Confirm Password..."
-                                                class="form-control" name="confirmPassword_signUp">
                                         </div>
-                                    </div>
 
-
+                                
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-success">SIGN UP</button>
                             </div>
-                            </form>
+                        </form> 
                         </div>
                     </div>
                 </div>
@@ -313,88 +228,88 @@
     <!-- Foter Start Here-->
 
     <!-- Footer -->
-    <footer class="page-footer" style="margin-top: 100px; background-color: white; padding: 20px;">
+<footer class="page-footer" style="margin-top: 100px; background-color: white; padding: 20px;">
 
         <!-- Footer Links -->
         <div class="container-fluid text-center text-md-left">
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-md-6 mt-md-0 mt-3">
-
-                    <!-- Content -->
-                    <h5 class="text-uppercase">Takad</h5>
-                    <p>Free Url scanner</p>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Contact us</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <hr class="clearfix w-100 d-md-none pb-3">
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Docmentation</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Get Started</a>
-                        </li>
-                        <li>
-                            <a href="#!">Searching</a>
-                        </li>
-                        <li>
-                            <a href="#!">Reports</a>
-                        </li>
-                        <li>
-                            <a href="#!">Api</a>
-                        </li>
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
-
-                    <!-- Links -->
-                    <h5 class="text-uppercase">Community</h5>
-
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="#!">Join Community</a>
-                        </li>
-                        <li>
-                            <a href="#!">Vote and Comment</a>
-                        </li>
-
-                    </ul>
-
-                </div>
-                <!-- Grid column -->
-
+      
+          <!-- Grid row -->
+          <div class="row">
+      
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3">
+      
+              <!-- Content -->
+              <h5 class="text-uppercase">Takad</h5>
+              <p>Free Url scanner</p>
+              <ul class="list-unstyled">
+                    <li>
+                      <a href="#!">Contact us</a>
+                    </li>
+              </ul>
+      
             </div>
-            <!-- Grid row -->
-
+            <!-- Grid column -->
+      
+            <hr class="clearfix w-100 d-md-none pb-3">
+      
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+      
+              <!-- Links -->
+              <h5 class="text-uppercase">Docmentation</h5>
+      
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Get Started</a>
+                </li>
+                <li>
+                  <a href="#!">Searching</a>
+                </li>
+                <li>
+                  <a href="#!">Reports</a>
+                </li>
+                <li>
+                  <a href="#!">Api</a>
+                </li>
+              </ul>
+      
+            </div>
+            <!-- Grid column -->
+      
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+      
+              <!-- Links -->
+              <h5 class="text-uppercase">Community</h5>
+      
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#!">Join Community</a>
+                </li>
+                <li>
+                  <a href="#!">Vote and Comment</a>
+                </li>
+                
+              </ul>
+      
+            </div>
+            <!-- Grid column -->
+      
+          </div>
+          <!-- Grid row -->
+      
         </div>
         <!-- Footer Links -->
-
+      
         <!-- Copyright -->
         <div class="footer-copyright text-center py-3">© 2019 Copyright:
-            <a href=""> Takad.com</a>
+          <a href=""> Takad.com</a>
         </div>
         <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
+      
+      </footer>
+      <!-- Footer -->
 
 </body>
 

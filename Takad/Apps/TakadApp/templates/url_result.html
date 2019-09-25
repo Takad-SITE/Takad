@@ -14,32 +14,30 @@
                         <tr>
                             <th class="text-center">Status</th>
                             <th>Information</th>
-
-                            <th class="text-right">Engines detected this URL</th>
-                            <th class="text-right">Date</th>
-
-                            <th></th>
+                            <th class="text-center">Date</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                <div class="img-container">
 
-                                    <img class="img" src="{% static 'takad/img/good_scan.png' %}" alt="...">
+                                <div class="img-container">
+                                    <div class="engines">
+                                        <div class="circle">
+                                            <div class="positives text-info" clean="">{{positives}}</div>
+                                            <div class="total">/ {{total}}</div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </td>
                             <td class="td-name">
-                                <h4>KOOORA.com</h4>
-                                <br><small>No engines detected this URL</small>
+                                <h4>{{url}}</h4>
+                                <br><small>{{verbose_msg}}</small>
                             </td>
 
-                            <td class="td-number">
-                                549
-                            </td>
-
-                            <td class="td-number">
-                                5-Septamber-2019
+                            <td class="td-number text-center">
+                                {{scan_date}}
                             </td>
 
                         </tr>
@@ -57,7 +55,6 @@
                 <div class="card-header card-header-tabs card-header-primary">
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
-                            <span class="nav-tabs-title">Tasks:</span>
                             <ul class="nav nav-tabs" data-tabs="tabs">
                                 <li class="nav-item">
                                     <a class="nav-link active show" href="#profile" data-toggle="tab">
@@ -73,13 +70,6 @@
                                         <div class="ripple-container"></div>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#settings" data-toggle="tab">
-                                        <i class="material-icons">people</i> Community
-                                        <div class="ripple-container"></div>
-                                        <div class="ripple-container"></div>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -87,38 +77,84 @@
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane active show" id="profile">
-                            <table class="table">
-                                <tbody>
+                            <table class="table table-hover">
+                                <thead class=" text-info">
                                     <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>ADMINUSLabs</td>
-                                        <td class="td-actions text-right">
-                                            <button type="button" rel="tooltip" title=""
-                                                class="btn btn-primary btn-link btn-sm" data-original-title="Edit Task">
-                                                <i class="material-icons">check</i>
-                                            </button>
 
-                                        </td>
+                                        <th>Antivirus</th>
+                                        <th>Detected</th>
+                                        <th>Result</th>
                                     </tr>
+                                </thead>
+                                <tbody>
+
+                                    {% for key, value in scans.items%}
+                                    <!--if detected = virus , background tabe yellow and font red-->
+                                    {% if value.detected == True %}
+                                    <tr class="bg-warning  text-danger font-weight-bold ">
+                                        <td>{{key}}</td>
+                                        <td>YES</td>
+                                        <td>{{value.result}}</td>
+                                    </tr>
+                                    {%else %}
+                                    <!--make it normal if not virus detected-->
+                                    <tr>
+                                        <td>{{key}}</td>
+                                        <td class="text-success">NO</td>
+                                        <td>{{value.result}}</td>
+                                    </tr>
+                                    {% endif %}
+
+
+
+                                    {% endfor %}
+
 
                                 </tbody>
                             </table>
+
+
+
                         </div>
                         <div class="tab-pane" id="messages">
                             <table class="table">
                                 <tbody>
                                     <tr>
                                         <td>
-                                            1
-                                        </td>
-                                        <td>
                                             <h6>Final URL:</h6>
-                                            <p>https://www.kooora.com/</p>
+                                            <p> {{url}}</p>
+                                            <br>
+                                            <h6>Body SHA-256</h6>
+                                            <p> {{scan_id}}</p>
+                                            <br>
+                                            <h6>Date and Time</h6>
+                                            <p> {{scan_date}}</p>
+                                            <br>
+                                            <h6>Detected</h6>
+                                            <p> {{positives}}</p>
+                                            <br>
+                                            <h6>Total scane</h6>
+                                            <p> {{total}}</p>
+
+                                            <hr>
+                                            <hr>
+                                            <h6>response_code</h6>
+                                            <p> {{response_code}}</p>
+                                            <br>
+
+                                            <h6>filescan_id</h6>
+                                            <p> {{filescan_id}}</p>
+                                            <br>
+
+                                            
+                                            
                                         </td>
+                                    </tr>
+
+                                    <tr>
 
                                     </tr>
+    
 
                                 </tbody>
                             </table>

@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+#ali added for page 404
+from django.conf.urls import handler404
+handler404='Apps.TakadApp.views.page404'
+
 urlpatterns = [
     path('', include('Apps.TakadApp.urls')),
     path('admin/', admin.site.urls),

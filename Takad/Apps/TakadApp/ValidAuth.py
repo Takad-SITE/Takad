@@ -46,9 +46,11 @@ def isVeryStrongPassword(inputPassword):
 
 def isItValidName(inputName):
     # length at least 2 characters
-    # only alphabetic
-    # no whitespace
-    patternName=re.compile("^([a-zA-z]{2,})$")
+    if len(inputName) <2 :
+        return False
+    # Expression can start only with a letter
+    # Expression can contain letters or spaces
+    patternName=re.compile("^[a-zA-z][a-zA-z\s]*$")  # ^[a-zA-z][a-zA-z\s]*$   ^([a-zA-z]{2,})$
     return bool(patternName.match(inputName)) # True/ False
 
 def isItValidEmail (inputEmail):

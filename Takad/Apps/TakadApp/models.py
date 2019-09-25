@@ -1,7 +1,7 @@
 from django.db import models
 from datetime import date, datetime
 # validation and authintication file which had made by Ali
-from .ValidAuth import * 
+from .ValidAuth import *
 """
 sigeUP:::
 
@@ -16,9 +16,11 @@ email_login
 password_login
 
 """
-#This is the Vaildation
+# This is the Vaildation
+
+
 class UsersManager(models.Manager):
-     def basic_validator(self, postData): # for testing
+    def basic_validator(self, postData):  # for testing
         errors = {}
         # vaildation for SignUp
         # first name characters only and more at least 2 characters
@@ -31,18 +33,19 @@ class UsersManager(models.Manager):
         if not isItValidEmail(str(postData["email_signUp"])):
             errors["email_signUp"] = "Please Enter Valid Email"
         # check the Email not exisit in DB
-        if len(Users.objects.filter(email=str(postData["email_signUp"]).lower())) >0:
+        if len(Users.objects.filter(email=str(postData["email_signUp"]).lower())) > 0:
             errors["email_signUp"] = "This Email Already Reigistered || Email already in DB"
         # password must be VERY STRONG
         # length minimum 8 characters at least one digit, lowerrcase, uppercase, and special
         if not isVeryStrongPassword(str(postData["password_signUp"])):
             errors["password_signUp"] = "Password Must be : length minimum 8 characters. at least one digit, lowerrcase, uppercase, and special"
 
-        #check the password is same for confirmation
+        # check the password is same for confirmation
         if str(postData["password_signUp"]) != str(postData["confirmPassword_signUp"]):
-            errors["confirmPassword_signUp"]="Password is not same"
+            errors["confirmPassword_signUp"] = "Password is not same"
 
         return errors
+
 
 class Users(models.Model):
     first_name = models.CharField(max_length=50)
@@ -50,8 +53,8 @@ class Users(models.Model):
     email = models.CharField(max_length=255, null=True)
     password = models.TextField()
     is_admin = models.BooleanField(default=False)
-    #for Vaildation part
-    objects =UsersManager()
+    # for Vaildation part
+    objects = UsersManager()
 
 
 class Reports(models.Model):
@@ -65,6 +68,7 @@ class Reports(models.Model):
     total = models.IntegerField()
     user = models.ForeignKey(Users, on_delete=models.CASCADE)
 
+
 class Scan(models.Model):
     name = models.CharField(max_length=50)
     detected = models.BooleanField()
@@ -72,4 +76,3 @@ class Scan(models.Model):
     result = models.CharField(max_length=255)
     update = models.IntegerField()
     report = models.ForeignKey(Reports, on_delete=models.CASCADE)
-
