@@ -2,6 +2,10 @@ from django.db import models
 from datetime import date, datetime
 # validation and authintication file which had made by Ali
 from .ValidAuth import *
+
+# for json problem to store Json in DB 
+from django.contrib.postgres.fields import JSONField
+
 """
 sigeUP:::
 
@@ -56,23 +60,8 @@ class Users(models.Model):
     # for Vaildation part
     objects = UsersManager()
 
+class Reports_result(models.Model): # Ali dictonaries
+    user = models.ForeignKey(Users, on_delete=models.CASCADE) # Registered user ID
+    is_file=models.BooleanField(default=False) # File = True / URL = False
+    dict_report= JSONField() # JSon Vield for DataReport_API
 
-class Reports(models.Model):
-    verbose_msg = models.TextField()
-    md5 = models.CharField(max_length=255)
-    sha1 = models.CharField(max_length=255)
-    sha256 = models.CharField(max_length=256)
-    scan_date = models.DateTimeField()
-    permalink = models.TextField()
-    positives = models.IntegerField()
-    total = models.IntegerField()
-    user = models.ForeignKey(Users, on_delete=models.CASCADE)
-
-
-class Scan(models.Model):
-    name = models.CharField(max_length=50)
-    detected = models.BooleanField()
-    version = models.CharField(max_length=255)
-    result = models.CharField(max_length=255)
-    update = models.IntegerField()
-    report = models.ForeignKey(Reports, on_delete=models.CASCADE)

@@ -15,171 +15,82 @@
 
 
 <div class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-success">
-                  <h4 class="card-title ">History</h4>
-                  <p class="card-category"> Here is a table with your scans history</p>
-                </div>
-                <div class="card-body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title ">History</h4>
+            <p class="card-category"> Here is a table with your scans history</p>
+          </div>
+          <div class="card-body">
 
-                        <div>
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-rose">
-                                        <div class="card-icon">
-                                            <i class="material-icons">content_copy</i>
-                                        </div>
-                                        <h3 class="card-title">Last Scan</h3>
-                                        <div class="card_body">
-                                            <p>19-9-2019</p>
-                                        </div>
-                                        
-                                        
-                                    </div>
-                                    <div class="card-footer">
-                                        <div class="stats">
-                                            
-                                            <a href="#pablo">Expand...</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead class=" text-info">
-                        <tr><th>
-                          ID
-                        </th>
-                        <th>
-                          Name
-                        </th>
-                        <th>
-                          Country
-                        </th>
-                        <th>
-                          City
-                        </th>
-                        <th>
-                          Salary
-                        </th>
-                      </tr></thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            1
-                          </td>
-                          <td>
-                            Dakota Rice
-                          </td>
-                          <td>
-                            Niger
-                          </td>
-                          <td>
-                            Oud-Turnhout
-                          </td>
-                          <td class="text-primary">
-                            $36,738
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            2
-                          </td>
-                          <td>
-                            Minerva Hooper
-                          </td>
-                          <td>
-                            Curaçao
-                          </td>
-                          <td>
-                            Sinaai-Waas
-                          </td>
-                          <td class="text-primary">
-                            $23,789
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            3
-                          </td>
-                          <td>
-                            Sage Rodriguez
-                          </td>
-                          <td>
-                            Netherlands
-                          </td>
-                          <td>
-                            Baileux
-                          </td>
-                          <td class="text-primary">
-                            $56,142
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            4
-                          </td>
-                          <td>
-                            Philip Chaney
-                          </td>
-                          <td>
-                            Korea, South
-                          </td>
-                          <td>
-                            Overland Park
-                          </td>
-                          <td class="text-primary">
-                            $38,735
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            5
-                          </td>
-                          <td>
-                            Doris Greene
-                          </td>
-                          <td>
-                            Malawi
-                          </td>
-                          <td>
-                            Feldkirchen in Kärnten
-                          </td>
-                          <td class="text-primary">
-                            $63,542
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            6
-                          </td>
-                          <td>
-                            Mason Porter
-                          </td>
-                          <td>
-                            Chile
-                          </td>
-                          <td>
-                            Gloucester
-                          </td>
-                          <td class="text-primary">
-                            $78,615
-                          </td>
-                        </tr>
-                      </tbody>
+
+            <div class="table-responsive">
+              <table class="table">
+                <thead class=" text-info">
+                  <tr>
+                    <th>URL/File</th>
+                    <th>Result</th>
+                    <th>Date Sacn</th>
+                    <th>Actions</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+
+                  {% if not theUser_ReportsArray %}
+                  <h2 class=" text-danger">
+                    Your Histroy is Empty
+                  </h2>
+                  {% endif %}
+
+                  {% for theOneByOneReport in theUser_ReportsArray %}
+
+                  <tr>
+                    <td class="text-justify" >{{theOneByOneReport.dict_report.url }}</td>
+                    <td> 
+                      <h3> 
+                        <span
+                        class="badge badge-warning badge-pill badge-lg">{{theOneByOneReport.dict_report.positives }}
+                      </span>
+                      </h3>
+                    </td>
+                    <td>{{theOneByOneReport.dict_report.scan_date }}</td>
+
+                    <td>
+                      <div class="row col container">
+                      <form action="ReportDetails/{{theOneByOneReport.id}}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="theReport_ID" class="btn btn-info">view</button>
+                      </form>
+
+                      <form action="ReportDetailsDelete/{{theOneByOneReport.id}}" method="post">
+                        {% csrf_token %}
+                        <button type="submit" name="theReport_ID" class="btn btn-danger">DELETE</button>
+                      </form>
+                    </div>
                       
-                    </table>
-                    
-                  </div>
-                </div>
-              </div>
-            
+                    </td>
+                  </tr>
+
+                  {%endfor%}
+
+
+
+
+                </tbody>
+
+              </table>
+
             </div>
           </div>
         </div>
+
       </div>
-      
-      {% endblock %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}
