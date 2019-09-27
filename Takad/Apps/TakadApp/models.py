@@ -51,7 +51,7 @@ class UsersManager(models.Manager):
         return errors
 
 
-class Users(models.Model):
+class Users(models.Model): 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=255, null=True)
@@ -62,6 +62,12 @@ class Users(models.Model):
 
 class Reports_result(models.Model): # Ali dictonaries
     user = models.ForeignKey(Users, on_delete=models.CASCADE) # Registered user ID
-    is_file=models.BooleanField(default=False) # File = True / URL = False
     dict_report= JSONField() # JSon Vield for DataReport_API
 
+class Messages(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE) # sender ID
+    title = models.CharField(max_length=255) 
+    message = models.TextField()
+    replay = models.TextField(default="")  # FOR
+    isRead=models.BooleanField(default=True) # FOR USER Auto change by view button
+    

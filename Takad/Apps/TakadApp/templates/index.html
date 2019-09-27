@@ -72,7 +72,12 @@
               <div class="ripple-container"></div>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+              
+              {% if isAdmin %}
+              <a class="dropdown-item" href="/admin">Profile</a>
+              {%else%}
               <a class="dropdown-item" href="/user">Profile</a>
+              {%endif%}
 
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Log out</a>
@@ -309,13 +314,12 @@
 
         <div class="tab-pane" id="messages">
 
-          <form action="/scan_file" method="POST">
+          <form action="/file_result" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="input-group" style="border: 1px solid #CED4DA; border-radius: 5px">
               <div class="custom-file">
-                <input type="file" class="custom-file-input" id="inputGroupFile04"
-                  aria-describedby="inputGroupFileAddon04">
+                <input type="file" class="custom-file-input" name="myfile" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
                 <label class="custom-file-label">Choose file</label>
               </div>
 

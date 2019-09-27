@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+
+    <title>Takad</title>
+    <style type="text/css">
+        body {
+            font-weight: 200;
+            font-size: 14px;
+            font-family: 'lato', sans-serif;
+        }
+
+        .header {
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+            color: #007cae;
+        }
+
+        .ali-center {
+            text-align: center;
+        }
+
+        .ali-blue {
+            color: #00BCD4;
+        }
+        .ali-green{
+            color: #4CAF50;
+        }
+        .ali-padding-margin
+        {
+            padding: 5px;
+            margin: 5px;
+        }
+
+        h2 {
+            font-size: 26px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        h2 small {
+            font-size: 0.5em;
+        }
+
+        .yes{
+            color: red;
+            font-weight: 70;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <h2 class="ali-green ">Takad <small > <small class="ali-blue">takad.argabi.site</small></small></h2>
+    <hr>
+    <small >
+    <p >Scan|  {{url}}</p>
+    <p>SHA-256| {{scan_id}}</p>
+    <p>Date| {{scan_date}}</p>
+    <p>DETECTED| {{positives}}</p>
+    <p>TOTAL SCANE| {{total}}</p>
+    </small>
+    <hr>
+    <table class= "ali-center ali-padding-margin" style="border:solid 1px gray"  >
+        <thead >
+            <tr>
+                <th>Antivirus</th>
+                <th>Detected</th>
+                <th>Result</th>
+            </tr>
+        </thead>
+        <tbody>
+
+                {% for key, value in scans.items%}
+                <!--if detected = virus , background tabe yellow and font red-->
+                {% if value.detected == True %}
+                <tr class="yes">
+                    <td>{{key}}</td>
+                    <td>YES</td>
+                    <td>{{value.result}}</td>
+                </tr>
+                {%else %}
+                <!--make it normal if not virus detected-->
+                <tr>
+                    <td>{{key}}</td>
+                    <td>NO</td>
+                    <td>{{value.result}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+        </tbody>
+    </table>
+    
+    <small>by Takad</small>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>
